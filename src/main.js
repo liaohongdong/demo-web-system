@@ -1,13 +1,15 @@
-import Vue from 'vue'
-import App from './App.vue'
-import './registerServiceWorker'
-import router from './router'
-import store from './store'
+/*
+ * @Author: hongdong.liao
+ * @Date: 2021-05-07 14:55:57
+ * @LastEditors: hongdong.liao
+ * @LastEditTime: 2021-05-13 17:27:03
+ * @FilePath: /microDemo/demo-web/demo-web-system/src/main.js
+ */
+import { loadPublicPath } from '@fe-micro/micro-core'
+import { lifeCycle } from './core/life-cycle'
 
-Vue.config.productionTip = false
+import './core/install'
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+const { bootstrap, mount, unmount } = lifeCycle()
+export { bootstrap, mount, unmount }
+loadPublicPath()

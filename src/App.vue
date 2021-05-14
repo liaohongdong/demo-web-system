@@ -1,32 +1,36 @@
+<!--
+ * @Author: hongdong.liao
+ * @Date: 2021-05-07 14:55:57
+ * @LastEditors: hongdong.liao
+ * @LastEditTime: 2021-05-13 19:09:38
+ * @FilePath: /microDemo/demo-web/demo-web-system/src/App.vue
+-->
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="nav" style="float: left;">
+      system 应用
+      <input v-model="data" />
+      <div @click="sendMessage">点击发送消息</div>
     </div>
     <router-view/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import { setState } from '@/utils/app-store'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  data () {
+    return {
+      data: 'system 的默认消息'
+    }
+  },
+  methods: {
+    sendMessage () {
+      setState({
+        message: this.data
+      })
     }
   }
 }
-</style>
+</script>
